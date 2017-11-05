@@ -6444,11 +6444,11 @@ Datasheet:&lt;br&gt; http://www.abracon.com/Resonators/abm7.pdf</description>
 <part name="GND15" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="C1" library="SparkFun-Capacitors" deviceset="CAP" device="0603-CAP" value="0.1uF"/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603-RES" value="10K"/>
-<part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603-RES" value="10K"/>
+<part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603-RES" value="470R"/>
+<part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603-RES" value="470R"/>
 <part name="D1" library="adafruit" deviceset="LED" device="CHIP-LED0603" value="YELLOW"/>
 <part name="D2" library="adafruit" deviceset="LED" device="CHIP-LED0603" value="RED"/>
-<part name="Q1" library="SparkFun-DiscreteSemi" deviceset="MOSFET-PCHANNEL" device="SMD" value="PMV37EN"/>
+<part name="Q1" library="SparkFun-DiscreteSemi" deviceset="MOSFET-PCHANNEL" device="SMD" value="FDN360P"/>
 <part name="Q3" library="SparkFun-DiscreteSemi" deviceset="MOSFET-PCHANNEL" device="SMD" value="PMV48XP"/>
 <part name="R8" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603-RES" value="10K"/>
 <part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
@@ -7532,8 +7532,22 @@ Datasheet:&lt;br&gt; http://www.abracon.com/Resonators/abm7.pdf</description>
 </sheet>
 </sheets>
 <errors>
+<approved hash="104,1,177.8,68.58,X1,GND1,GND,,,"/>
+<approved hash="104,1,177.8,63.5,X1,GND2,GND,,,"/>
+<approved hash="104,1,162.56,68.58,X1,GND3,GND,,,"/>
+<approved hash="104,1,162.56,63.5,X1,GND4,GND,,,"/>
+<approved hash="104,1,147.32,124.46,U5,IN,5V,,,"/>
+<approved hash="104,1,177.8,121.92,U5,OUT,3.3V,,,"/>
 <approved hash="206,1,187.96,165.1,5V,,,,,"/>
 <approved hash="206,1,187.96,162.56,5V,,,,,"/>
+<approved hash="106,1,86.36,149.86,ADC6,,,,,"/>
+<approved hash="106,1,86.36,147.32,ADC7,,,,,"/>
+<approved hash="106,1,149.86,88.9,DIO5_LORA,,,,,"/>
+<approved hash="106,1,213.36,142.24,N$6,,,,,"/>
+<approved hash="113,1,210.143,124.655,J4,,,,,"/>
+<approved hash="113,1,235.543,124.655,J5,,,,,"/>
+<approved hash="113,1,170.18,66.9653,X1,,,,,"/>
+<approved hash="113,1,166.963,82.7447,JP3,,,,,"/>
 </errors>
 </schematic>
 </drawing>

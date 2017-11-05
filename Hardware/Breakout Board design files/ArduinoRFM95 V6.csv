@@ -1,0 +1,48 @@
+Part;Value;;;;Device;Package;Description;MPN;PROD_ID;VALUE
+C1;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C2;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C3;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C4;10uF;Tantalum capacitor 10uf 16v type B 3528 (1210) ;0,13;;CAP_POL3528-KIT;EIA3528-KIT;Capacitor Polarized;;;
+C5;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C6;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C7;47pF;;;;CAP0603-CAP;0603-CAP;Capacitor;;;
+C8;47pF;;;;CAP0603-CAP;0603-CAP;Capacitor;;;
+C9;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C10;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C11;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C12;10uF;Tantalum capacitor 10uf 16v type B 3528 (1210) ;0,13;;CAP_POL3528-KIT;EIA3528-KIT;Capacitor Polarized;;;
+C13;1uF;0603 1UF ceramic capacitor;0,0086;https://www.aliexpress.com/item/100PCS-0603-1UF-105-1000NF-10V-Y5V-Ceramic-capacitors-Good-Quality-and-ROHS/1091059510.html?spm=a2g0s.9042311.0.0.PeR08B;CAP0603-CAP;0603-CAP;Capacitor;;;
+C14;10uF;Tantalum capacitor 10uf 16v type B 3528 (1210) ;0,13;;CAP_POL3528-KIT;EIA3528-KIT;Capacitor Polarized;;;
+C15;0.1uF;0603 0.1uF 50V  10% SMD Multilayer Ceramic Chip Capacitor;0,0057;aliexpress (seller don't exist anymore);CAP0603-CAP;0603-CAP;Capacitor;;;
+C16;18pF;GRM1885C1H180JA01J ;0,0418;http://fr.farnell.com/murata/grm1885c1h180ja01j/condensateur-mlcc-c0g-18pf-50v/dp/2611915?CMP=i-bf9f-00001000;CAP0603-CAP;0603-CAP;Capacitor;;;
+C17;18pF;GRM1885C1H180JA01J ;0,0418;http://fr.farnell.com/murata/grm1885c1h180ja01j/condensateur-mlcc-c0g-18pf-50v/dp/2611915?CMP=i-bf9f-00001000;CAP0603-CAP;0603-CAP;Capacitor;;;
+D1;YELLOW;0603 SMD LED Kits;0,03;https://www.aliexpress.com/item/0603-SMD-LED-Kits-Red-Yellow-Blue-Green-White-5-colors-each-20pcs/32552321637.html?spm=a2g0s.9042311.0.0.xih9DH;LEDCHIP-LED0603;CHIP-LED0603;LED;;;
+D2;RED;0603 SMD LED Kits;0,03;https://www.aliexpress.com/item/0603-SMD-LED-Kits-Red-Yellow-Blue-Green-White-5-colors-each-20pcs/32552321637.html?spm=a2g0s.9042311.0.0.xih9DH;LEDCHIP-LED0603;CHIP-LED0603;LED;;;
+F1;MF-MSMF050-2;MF-MSMF050-2;0,105;https://www.aliexpress.com/item/10PCS-MF-MSMF050-2-MF-MSMF050-PTC-RESETTABLE-FUSE-0-5A-500MA-15V-For-BOURNS-1812/32633390844.html?spm=a2g0s.9042311.0.0.PeR08B;SMD-PPTC-FUSE-PPTC-0.50A-15V-0.15OHM(1812);F1812;307010040;MF-MSMF050-2;;MF-MSMF050-2
+FRAME1;FRAME-LETTER;;;;FRAME-LETTER;CREATIVE_COMMONS;Schematic Frame;;;
+J2;AVR_SPI_PRG_6PTH;2.54mm 2 x 40 Pin Male Double Row;0,12;https://www.aliexpress.com/item/5-PCS-2-54mm-2-x-40-Pin-Male-Double-Row-Pin-Header-Strip/32216818428.html?spm=a2g0s.9042311.0.0.PeR08B;AVR_SPI_PRG_6PTH;2X3;AVR ISP 6 Pin;;;
+J3;USB-SMD-NS;Mini USB Type B SMD Female Socket 5-Pin;0,75;aliexpress (seller don't exist anymore);USB-SMD-NS;USB-MINIB-NOSTOP;USB Connectors;;;
+J4;;;;;M161X16_NO_SILK;1X16_NO_SILK;"1x16 .1 header""";;;
+J5;;;;;M161X16_NO_SILK;1X16_NO_SILK;"1x16 .1 header""";;;
+JP3;;;;;M01NOSILK-KIT;1X01NS-KIT;Header 1;;;
+Q1;FDN360P;FDN360P;0,362;http://fr.farnell.com/on-semiconductor-fairchild/fdn360p/transistor-mosfet-p-sot-23/dp/9846336?CMP=i-bf9f-00001000;MOSFET-PCHANNELSMD;SOT23-3;Generic PMOSFET;;;
+Q2;MOSFET-NCHANNEL2N7002PW;;;;MOSFET-NCHANNEL2N7002PW;SOT323;Common NMOSFET Parts;;TRANS-11151;
+Q3;PMV48XP;PMV48XP P-channel MOSFET;0,19;https://www.aliexpress.com/item/Free-shipping-10pcs-lot-PMV48XP-P-channel-MOSFET-FET-SOT-23-new-original/32558117050.html?spm=a2g0s.9042311.0.0.xih9DH;MOSFET-PCHANNELSMD;SOT23-3;Generic PMOSFET;;;
+R1;10K;Resistor 1% 0603 10K;0,0044;aliexpress (seller don't exist anymore);RESISTOR0603-RES;0603-RES;Resistor;;;
+R2;27R;;;;RESISTOR0603-RES;0603-RES;Resistor;;;
+R3;27R;;;;RESISTOR0603-RES;0603-RES;Resistor;;;
+R4;10K;Resistor 1% 0603 10K;0,0044;aliexpress (seller don't exist anymore);RESISTOR0603;0603-RES;Resistor;;;
+R5;470R;0603 1% 470 Ohm;0,0034;https://www.aliexpress.com/item/100pcs-bag-0603-1-4-7R-47R-470R-4-7K-47K-470K-5-1R-51R-510R/32815003609.html?spm=a2g0s.9042311.0.0.FvhC2W;RESISTOR0603-RES;0603-RES;Resistor;;;
+R6;470R;0603 1% 470 Ohm;0,0034;https://www.aliexpress.com/item/100pcs-bag-0603-1-4-7R-47R-470R-4-7K-47K-470K-5-1R-51R-510R/32815003609.html?spm=a2g0s.9042311.0.0.FvhC2W;RESISTOR0603-RES;0603-RES;Resistor;;;
+R7;10K;Resistor 1% 0603 10K;0,0044;aliexpress (seller don't exist anymore);RESISTOR0603-RES;0603-RES;Resistor;;;
+R8;10K;Resistor 1% 0603 10K;0,0044;aliexpress (seller don't exist anymore);RESISTOR0603-RES;0603-RES;Resistor;;;
+R9;100K;Resistor 1% 0603 100K;0,0044;aliexpress (seller don't exist anymore);RESISTOR0603-RES;0603-RES;Resistor;;;
+U1;ATMEGA328P_TQFP;ATMEGA328P-AU;1,9;http://fr.farnell.com/microchip/atmega328p-au/micro-8-bits-avr-32k-flash-32tqfp/dp/1715486?CMP=i-bf9f-00001000;ATMEGA328P_TQFP;TQFP32-08;;;IC-09069;ATMEGA328P_TQFP
+U2;RFM95;RFM95 868Mhz 20dBm;8,26;https://www.aliexpress.com/item/NEW-RFM95-20dBm-The-wireless-transceiver-module-RFM95-868MHZ/32613801519.html?spm=a2g0s.9042311.0.0.PeR08B;RFM69HCW;RFM69HCW-XXXS2;;;IC-11997, IC-12053;
+U3;FT231XS;FT231XS-R;2,32;http://fr.farnell.com/ftdi/ft231xs/i-f-usb2-0-fs-to-f-l-h-s-uart/dp/2081328?CMP=i-bf9f-00001000;FT231XS;SSOP20_L;FTDI FT231X Full Speed USB to Full-handshake UART;;IC-11524;FT231XS
+U4;NCP1117ST50T3G;NCP1117ST50T3G;0,397;http://fr.farnell.com/on-semiconductor/ncp1117st50t3g/regulateur-ldo-15vin-1a-5v-1-3sot223/dp/2112617?CMP=i-bf9f-00001000;V_REG_LM1117SOT223;SOT223;Voltage Regulator LM1117;;VREG-08170;
+U5;LP2992-33;LP2992AIM5X-3.3;0,217;https://www.aliexpress.com/item/Free-shipping-10pcs-lot-LP2992AIM5X-3-3-SOT23-5-LP2992AIM5-3-3-original-Product/32518298977.html?spm=a2g0s.9042311.0.0.PeR08B;LP2992-3.3;SOT-23-5;LP2992-x;;;
+U6;ATSHA204-TSU; ATSHA204A-STUCZ;1,08;https://www.aliexpress.com/item/Free-Shipping-5-PCS-LOT-ATSHA204A-STUCZ-T-ATSHA204A-STUCZ-ATSHA204A-SOT23-NEW-IN-STOCK/32630759618.html?spm=a2g0s.9042311.0.0.b81fyB;ATSHA204-TSU;SOT23-3;Atmel ATSHA204;;;
+X1;SMA -   50 Ohm Connectors;142-0711-821;5,31;http://fr.farnell.com/johnson-cinch-connectivity/142-0711-821/conncetur-jack-sma/dp/1019328?CMP=i-bf9f-00001000;SMACONNECTOR_EDGE_UFL;SMA_EDGELAUNCH_UFL;SMA Connector;;;
+XTAL;AMB7;ABM7-8.000MHZ-D2Y-T;0,73;http://fr.farnell.com/abracon/abm7-8-000mhz-d2y-t/quartz-8mhz-18pf-cms/dp/2101337?CMP=i-bf9f-00001000;AMB7;2-SMD_ABM7;ABM7;;;
+;Antenna;;;;;;;;;
