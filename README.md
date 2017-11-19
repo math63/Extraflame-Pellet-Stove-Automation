@@ -11,7 +11,7 @@ Comments :
 In mysensors plugin for jeedom, change baudrate from 115200 to 38400 :
 Mysensors/Node/mysensors.js
 
-
+```
 var SerialPort = require('serialport');
 	gw = new SerialPort(gwAddress);
         //compatibilité avec la nouvelle verion de serialport
@@ -20,3 +20,4 @@ var SerialPort = require('serialport');
         }else{
                 gw.settings.baudrate=38400;
         }
+```
