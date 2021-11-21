@@ -44,7 +44,7 @@
 //#define MY_RADIO_NRF24
 #define MY_RADIO_RFM95
 
-#define MY_RFM95_SPI_CS 10 // NSS
+#define MY_RFM95_CS_PIN 4 // NSS carte atmega1284p
 #define MY_RFM95_IRQ_PIN 2 // IRQ D100
 //#define MY_RFM95_RST_PIN 4
 
@@ -86,47 +86,109 @@
 //#define MY_DEFAULT_TX_LED_PIN  5  // the PCB, on board LED
 
 #include <MySensors.h>
-
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include "Adafruit_BME680.h"
 
 #define PELLET_NODE_ID  1
 
 MyMessage msgGw2Node(0,V_CUSTOM);
-MyMessage msgNode2Gw(1,V_CUSTOM);
 //
 //
 MyMessage msgtempc(11,V_HVAC_SETPOINT_HEAT);
 MyMessage msgpower(12,V_VAR3);
-
+MyMessage msgprog(15,V_STATUS);
+MyMessage msgstand(16,V_STATUS);
 //
 //
 MyMessage msgtempa(20,V_TEMP);
-MyMessage msgetat(21,V_VAR2);
-MyMessage msgerreur(22,V_VAR3);
+MyMessage msgetat(21,V_TEXT);
+MyMessage msgerreur(22,V_TEXT);
+MyMessage msgtempfum(23,V_TEMP);
+MyMessage msgtempres(24,V_TEMP);
+MyMessage msgtempinair(25,V_TEMP);
+MyMessage msgcadvis(26,V_VAR1);
+MyMessage msgvitfum(27,V_VAR1);
+MyMessage msgdurphase(28,V_VAR2);
+MyMessage msgflux(29,V_VAR4);
+MyMessage msgpowerreal(30,V_VAR3);
 
+//
+//
+MyMessage temperatureMsg(40, V_TEMP);
+MyMessage humidityMsg(41, V_HUM);
+MyMessage pressureMsg(42, V_PRESSURE);
+//                   0      1           2                         3                   4                     5           6                 7           8                         9               
+//  String MsgEtat[]={"Off","Démarrage","Allumage - Charg pellet","Démarrage Flamme","Travail - Modulation","Nettoyage","Nettoyage Final","Stand-by","Erreur, Refroidissement","Erreur, Off"};
+ const char* MsgEtat[]={"Off","Demarrage","Allumage-Charg","Dem Flamme","Travail-Modul","Nettoyage","Nettoyage Final","Stand-by","Erreur, Refroidissement","Erreur, Off"};
+//                     0   1   2   3   4   5   6   7   8               9   10   11   12   13   14   15   16                 17   18
+//  String MsgErreur[]={"-","1","2","3","4","5","6","7","Allumage Raté","9","10","11","12","13","14","15","Pellets terminés","17","18"};
+ const char* MsgErreur[]={"-","No All Black-Out","Sonde Fumee","Temp Fumees","Asp Fumees KO","Allumage Rate","Pellets term","Depression","No Flux","Err inconnue"};
+
+Adafruit_BME680 bme; // I2C
+
+unsigned long delayTime;
+  
 void setup()
 {
 	// Setup locally attached sensors
+ 
+  if (!bme.begin()) {
+    Serial.println("Could not find a valid BME680 sensor, check wiring!");
+    while (1);
+  }
+  // weather monitoring
+  
+  // Set up oversampling and filter initialization
+  
+  bme.setTemperatureOversampling(BME680_OS_1X);
+  bme.setHumidityOversampling(BME680_OS_1X);
+  bme.setPressureOversampling(BME680_OS_1X);
+  bme.setIIRFilterSize(BME680_FILTER_SIZE_0);  
+  bme.setGasHeater(0, 0); // 320*C for 150 ms
+
+  
+                     
+    // suggested rate is 1/60Hz (1m)
+    delayTime = 60000; // in milliseconds
 }
 
 void presentation()
 {
 //  wait(30000);
-sendSketchInfo("Pellet STOVE GW", "1.0");
+sendSketchInfo("Pellet STOVE GW", "2.2");
   // Present locally attached sensors
-  present(10, S_HEATER); //commande  V_STATUS : on/off
-  present(11, S_HEATER); //commande V_HVAC_SETPOINT_HEAT : consigne temp
-  present(12, S_HEATER); //commande V_VAR1 : consigne power
-  present(13, S_HEATER); //commande V_STATUS : actualisation
-  present(14, S_HEATER); //commande V_STATUS : Reset node
   
-  present(20, S_HEATER); //info V_TEMP : temp ambiant
-  present(21, S_HEATER); //info V_VAR2 : Etat
-  present(22, S_HEATER); //info V_VAR3 : Erreur
+//  present(10, S_HEATER); //commande  V_STATUS : on/off
+//  present(11, S_HEATER); //commande V_HVAC_SETPOINT_HEAT : consigne temp
+// present(12, S_HEATER); //commande V_VAR3 : consigne power
+//  present(13, S_HEATER); //commande V_STATUS : actualisation
+//  present(14, S_HEATER); //commande V_STATUS : Reset node
+//  present(15, S_HEATER); //commande V_STATUS : prog
+  
+//  present(20, S_HEATER); //info V_TEMP : temp ambiant
+//  present(21, S_HEATER); //info V_TEXT : Etat
+//  present(22, S_HEATER); //info V_TEXT : Erreur
+  
+//    present(30, S_TEMP);
+//    present(31, S_HUM);
+//    present(32, S_BARO);
+  
 }
 
 void loop()
 {
   // Send locally attached sensor data here
+
+  if (! bme.performReading()) {
+    Serial.println("Failed to perform reading :(");
+    return;
+  }
+send(temperatureMsg.set(bme.temperature, 1));
+send(humidityMsg.set(bme.humidity, 1));
+send(pressureMsg.set(bme.pressure/100.0, 1));
+
+wait(delayTime);
 }
 
 void receive(const MyMessage &message)
@@ -149,45 +211,143 @@ switch(message.sensor)
 	datasent[1]=(uint8_t) message.getFloat();
 	send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
 		break;
-	case 13 : // refresh
+	case 13 : // Actualisation
 	datasent[0]=4;
 	datasent[1]=(uint8_t) message.getBool();
 	send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
 		break;
-	case 14 : // refresh
+	case 14 : // reset
 	datasent[0]=5;
 	datasent[1]=(uint8_t) message.getBool();
 	send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
-		break;	
+		break;
+  case 15 : // Programmation on/off
+  datasent[0]=6;
+  datasent[1]=(uint8_t) message.getBool();
+  send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
+    break;
+   case 16 : // Stand-by on-off
+  datasent[0]=7;
+  datasent[1]=(uint8_t) message.getBool();
+  send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
+    break;
+  case 17 : // MAJ date/heures
+  datasent[0]=8;
+  datasent[1]=(uint8_t) message.getBool();
+  send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
+    break;
+  case 18 : // Exploration RAM par lignes
+  datasent[0]=9;
+  datasent[1]=(uint8_t) message.getFloat();
+  send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
+    break;
+  case 19 : // Exploration ROM par lignes
+  datasent[0]=10;
+  datasent[1]=(uint8_t) message.getFloat();
+  send(msgGw2Node.setDestination(PELLET_NODE_ID).set(datasent,2));
+    break;
+    
 		
 	default : 
 	Serial.println("Erreur de commande");
 	break;
 	
 }
-} else if(message.sender == PELLET_NODE_ID && message.type== V_CUSTOM){
+} else if(message.sender == PELLET_NODE_ID && message.type== V_CUSTOM && message.sensor==1 ){
 	
 	uint8_t* data=(uint8_t*)message.getCustom();
-	if (message.version_length>>3 == 4)
+	if (message.version_length>>3 == 13)
 	{
 		uint8_t tempc=0;
 	  uint8_t tempa=0;
 	  uint8_t power=0;
 	  uint8_t etat=0;
 	  uint8_t erreur=0;
-	  
-	
+    uint8_t prog=0;
+    uint8_t stand=0;
+    uint8_t temp_fum=0;
+    uint8_t temp_res=0;
+    uint8_t temp_inair=0;
+    uint8_t cad_vis=0;
+    uint8_t vit_fum=0;
+    uint8_t dur_phase=0;
+    uint8_t flux=0;
+    uint8_t power_real=0;
+ 
 	tempc =  data[0];
 	tempa = data[1];
 	power =  data[2]>>4 ;
 	etat = data[2]& 0b00001111;
-	erreur = data[3];
-	
+  prog = data[3]>>7;
+  stand = (data[3]& 0b01000000)>>6 ;
+	erreur = data[4];
+  temp_fum = data[5];
+	temp_res = data[6];
+  temp_inair = data[7];
+  cad_vis = data[8];
+  vit_fum = data[9];
+  dur_phase = data[10];
+  flux = data[11];
+  power_real = data[12];
+  
 	send(msgtempa.set(tempa/2.0,1));
-	send(msgetat.set(etat));
-	send(msgerreur.set(erreur));
+	send(msgetat.set(MsgEtat[etat]));
+	send(msgerreur.set(MsgErreur[transError(erreur)]));
 	send(msgpower.set(power));
 	send(msgtempc.set(tempc));
-	}
+  send(msgprog.set(prog));
+  send(msgstand.set(stand));
+  send(msgtempfum.set(temp_fum));
+  send(msgtempres.set(temp_res));
+  send(msgtempinair.set(temp_inair/2.0-15.0,1));
+  send(msgcadvis.set(cad_vis/40.0,1));
+  send(msgvitfum.set(vit_fum*10+250));
+  send(msgdurphase.set(dur_phase));
+  send(msgflux.set(flux/10.0,1));
+  send(msgpowerreal.set(power_real));
+   
 }
+} else if(message.sender == PELLET_NODE_ID && message.type== V_CUSTOM && message.sensor==2 ){
+  
+	
+} else if(message.sender == PELLET_NODE_ID && message.type== V_CUSTOM && message.sensor==3 ){
+	
+}
+}
+
+uint8_t transError(uint8_t erreur) {
+  uint8_t error_tab;
+  switch(erreur) {
+  case 0 : // pas d'erreur
+  error_tab= 0;
+    break; 
+  case 255 : // All black out
+  error_tab= 1;
+    break; 
+  case 1 : // Sonde Fumee
+  error_tab= 2;
+    break; 
+   case 2 : // Temp Fumees
+  error_tab= 3;
+    break;
+  case 4 : // Asp Fumees KO
+  error_tab= 4;
+    break;
+  case 8 : // Allumage Rate
+  error_tab= 5;
+    break;
+  case 16 : // Pellets term
+  error_tab= 6;
+    break;
+  case 32 : // Depression
+  error_tab= 7;
+   break;
+  case 64 : // No Flux
+  error_tab= 8;
+    break;
+  default : 
+  error_tab = 9;
+  break;
+  }
+  return error_tab;
 }
